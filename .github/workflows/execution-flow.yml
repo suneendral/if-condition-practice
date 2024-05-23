@@ -75,3 +75,10 @@ jobs:
         run: ls
       - name: Deploy
         run: echo "Deploying..."
+  
+  report:
+    needs: [lint,test]
+    if: failure()
+    steps:
+      - name: output result
+        run: echo "something went wrong"
